@@ -134,9 +134,9 @@ També es pot fer d'aquesta forma (mètode anterior a l'aparició del *git resto
  ```
  
 ### Etiquetat
- #+begin_src bash
+```
  git tag TAG
- #+end_src
+ ```
 
 Aquesta ordre crea un *tag* al commit on ens trobem en aquest moment. Un *tag* és un àlies que s'utilitza per fer referència a un commit sense necessitat de saber el seu hash. Normalment s'utilitza per a *indicar números o noms de versions* associades a un determinat commit. D'aquesta manera podem identificar una versió d'una manera més amable.
 
