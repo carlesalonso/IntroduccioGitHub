@@ -86,7 +86,7 @@ Per mostrar canvis entre staged i el repositori
 
 Visualitzar canvis dels fitxers a l'àrea de preparació:
 
-*** Confirmar canvis (commit)
+### Confirmar canvis (commit)
  ```
  git commit -m "missatge"
  ```
