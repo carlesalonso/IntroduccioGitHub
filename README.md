@@ -37,7 +37,7 @@ Alternativament, podem crear la carpeta del repositori:
 ```
 
 ### Cicle de vida
- ![Cicle de vida]([https://git-scm.com/book/en/v2/images/lifecycle.png)
+![Cicle de vida](https://git-scm.com/book/en/v2/images/lifecycle.png)
 
 ### Revisant l'estat
 ```
