@@ -46,7 +46,7 @@ Alternativament, podem crear la carpeta del repositori:
 
  Esquema de colors:
  - *Vermell* - Identifica els arxius *modificats o nous*. Si es creen arxius dins de carpetes noves, *git status* només mostrarà el nombr de la carpeta, no el seu contingut. Si es vol veure el contingut de les carpetes noves s'ha d'executar *git status -u*.
- - *Verde* - Identifica els arxius a l'*àrea de preparació*.
+ - *Verd* - Identifica els arxius a l'*àrea de preparació*.
 
 ### Visualitzar canvis
  Mostra diferència entre directori de treball i staged
