@@ -12,7 +12,7 @@ A la carpeta *files* teniu la presentació en format PDF, un full de consulta r�
 
 ## Continguts
 ### Instal·lació
- - [[https://git-scm.com/download][https://git-scm.com/download]]
+ - [https://git-scm.com/download](https://git-scm.com/download)
 
 ### Configuració
   ```
@@ -37,7 +37,7 @@ Alternativament, podem crear la carpeta del repositori:
 ```
 
 ### Cicle de vida
- [[https://git-scm.com/book/en/v2/images/lifecycle.png]]
+ ![Cicle de vida]([https://git-scm.com/book/en/v2/images/lifecycle.png)
 
 ### Revisant l'estat
 ```
@@ -45,7 +45,7 @@ Alternativament, podem crear la carpeta del repositori:
 ```
 
  Esquema de colors:
- - *Vermell* - Identifica els arxius *modificats o nous*. Si es creen arxius dins de carpetes noves, ~git status~ només mostrarà el nombr de la carpeta, no el seu contingut. Si es vol veure el contingut de les carpetes noves s'ha d'executar ~git status -u~.
+ - *Vermell* - Identifica els arxius *modificats o nous*. Si es creen arxius dins de carpetes noves, *git status* només mostrarà el nombr de la carpeta, no el seu contingut. Si es vol veure el contingut de les carpetes noves s'ha d'executar *git status -u*.
  - *Verde* - Identifica els arxius a l'*àrea de preparació*.
 
 ### Visualitzar canvis
