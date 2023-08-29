@@ -94,7 +94,7 @@ Visualitzar canvis dels fitxers a l'àrea de preparació:
 Un commit equival a una nova *versió* al repositori. Cada commit té un *identificador únic*, anomenat ~hash~. Els commits estan relacionats entre si mitjançant una *xarxa de tipus graf*.
 
 ### Ignorar arxius
- - Arxiu ~.gitignore~
+ - Arxiu *.gitignore*
  - Plantilles d'arxius [[https://github.com/github/gitignore][.gitignore]].
 
 Les rutes i noms de fitxer que apareguin al fitxer *.gitignore* seran ignorades per *git* **sempre que no hagin estat afegides prèviament a l'àrea de preparació o al repositori**. Per exemple, si afegim un fitxer a l'àrea de preparació mitjançant *git add* i tot seguit l'afegim al fitxer *.gitignore*, *git* el seguirà mantenint a l'àrea de preparació, per la qual cosa serà inclòs al repositori si executem un fitxer *git commit*.
