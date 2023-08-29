@@ -95,7 +95,7 @@ Un commit equival a una nova *versió* al repositori. Cada commit té un *identi
 
 ### Ignorar arxius
  - Arxiu *.gitignore*
- - Plantilles d'arxius [[https://github.com/github/gitignore][.gitignore]].
+ - Plantilles d'arxius [.gitignore](https://github.com/github/gitignore).
 
 Les rutes i noms de fitxer que apareguin al fitxer *.gitignore* seran ignorades per *git* **sempre que no hagin estat afegides prèviament a l'àrea de preparació o al repositori**. Per exemple, si afegim un fitxer a l'àrea de preparació mitjançant *git add* i tot seguit l'afegim al fitxer *.gitignore*, *git* el seguirà mantenint a l'àrea de preparació, per la qual cosa serà inclòs al repositori si executem un fitxer *git commit*.
 
