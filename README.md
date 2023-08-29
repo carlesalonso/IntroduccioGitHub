@@ -115,7 +115,7 @@ Aquesta ordre mostra l'històric dels commits del repositori. Es pot navegar a l
 ```
 Aquesta ordre ens permet mostrar els canvis que es van introduir en un determinat commit. En primer lloc es pot executar *git log* per cercar el hash del commit que ens interessi i tot seguit executar *git show* indicant després el hash del commit corresponent.
 
-Els hash dels commits tenen 40 caràcters, però no cal copiar-los sencers: només cal indicar entre els [[http://git-scm.com/book/en/v2/Git-Tools-Revision-Selection#Short-SHA -1][8 i 10 primers caràcters]] per identificar un commit correctament.
+Els hash dels commits tenen 40 caràcters, però no cal copiar-los sencers: només cal indicar entre els [8 i 10 primers caràcters](http://git-scm.com/book/en/v2/Git-Tools-Revision-Selection#Short-SHA-1) per identificar un commit correctament.
 
 ### Treure fitxer de l'àrea de preparació
 ```
