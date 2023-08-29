@@ -1,2 +1,2 @@
-# IntroduccioGitHub
-Repositori base curs Introducció a GitHub
+# Introducció al control de versions amb GitHub
+
