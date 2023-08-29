@@ -67,16 +67,16 @@ Per mostrar canvis entre staged i el repositori
  git add .       # Afegir tots els arxius nous o modificats
 ```
 
- L'àrea de preparació* conté els canvis que s'afegiran a la nova versió quan executem un ~commit~. És possible la següent situació:
-- Modificar un fitxer (apareixerà en color vermell en fer un ~git status~)
- - Afegir el fitxer a l'àrea de preparació mitjançant ~git add FITXER~
- - El fitxer apareixerà en color *verd* en fer un ~git status~
+ L'àrea de preparació* conté els canvis que s'afegiran a la nova versió quan executem un *commit*. És possible la següent situació:
+- Modificar un fitxer (apareixerà en color vermell en fer un *git status*)
+ - Afegir el fitxer a l'àrea de preparació mitjançant *git add FITXER*
+ - El fitxer apareixerà en color *verd* en fer un *git status*
  - Tornar a modificar el fitxer
- - El fitxer apareixerà *dues vegades* en fer un ~git status~:
+ - El fitxer apareixerà *dues vegades* en fer un *git status*:
    - En color verd, indicant que s'ha afegit el primer canvi a l'àrea de preparació
    - En color *vermell*, indicant que hi ha un "segon canvi" posterior que *no s'ha inclòs* a l'àrea de preparació
- - Si s'executa un ~git commit~ en aquest moment *només s'incorporarà el primer canvi* al repositori com a nova versió. El segon canvi continuarà existint (l'arxiu no haurà canviat), però no estarà guardat al commit
- - Si voleu afegir el segon canvi s'haurà d'executar novament ~git add~ per afegir-lo a l'àrea de preparació
+ - Si s'executa un ^git commit* en aquest moment *només s'incorporarà el primer canvi* al repositori com a nova versió. El segon canvi continuarà existint (l'arxiu no haurà canviat), però no estarà guardat al commit
+ - Si voleu afegir el segon canvi s'haurà d'executar novament *git add* per afegir-lo a l'àrea de preparació
  
 ### Visualitzar canvis dels fitxers a l'àrea de preparació
  ```
