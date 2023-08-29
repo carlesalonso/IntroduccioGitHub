@@ -1,5 +1,7 @@
 # Introducció al control de versions amb GitHub
 
+![GitHub Logo](/img/github-mark.png)
+
 Per clonar-vos aquest repostitori feu:
 
 ```code
