@@ -162,7 +162,12 @@ També es pot fer d'aquesta forma (mètode anterior a l'aparició del *git resto
 git tag TAG
 ```
 
-Aquesta ordre crea un *tag* al commit on ens trobem en aquest moment. Un *tag* és un àlies que s'utilitza per fer referència a un commit sense necessitat de saber el seu hash. Normalment s'utilitza per a *indicar números o noms de versions* associades a un determinat commit. D'aquesta manera podem identificar una versió d'una manera més amable.
+Exemple:
+
+````console
+git tag -a 0.0.1 -m "Release version 0.0.1"
+``
+Aquesta ordre crea un *tag* al commit on ens trobem en aquest moment. Un *tag* és un àlies que s'utilitza per fer referència a un commit sense necessitat de saber el seu hash. Normalment s'utilitza per a *indicar números o noms de versions* associades a un determinat commit. D'aquesta manera podem identificar una versió d'una manera més amable. Hi ha un estàndard a l'etiquetatge del programari anomenat [versionat semàntic](https://semver.org/lang/es/).
 
 ### Eliminar commits
 
@@ -192,6 +197,33 @@ git revert --no-edit HEAD~4
 ``
 
 Aquesta comanda faria un nou commit replicant la versió corresponent al HEAD-4, també es pot indicar el id del commit.
+
+### Branques
+
+Una branca (branch) és una línia independent de desenvolupament: per tant, amb el seus propis working directory, staging area i project history (git directory). Com a mínim un repositori ha de tenir una branca. La branca inicial es ```master`` o ```main``. Existeix un punter especial que apunta a la branca activa en aquell moment i que s'anomena ```HEAD``.
+
+Al canviar de branca es modifica el contingut del directori de treball a l'estat que tenia amb la branca destinació.
+
+### Crear branques
+
+```console
+git branch nom_branca
+``
+
+Si volem veure les branques que tenim definides:
+
+```console
+git branch
+``
+### Canviar de branca
+
+La comanda tradicional per canviar de branca i que encara funciona és ```git checkout`` tot i que actualment tenim també l'opció d'utilitzar ```git switch``
+
+```console
+git checkout dev
+git switch main
+``
+
 
 
 ## Links
