@@ -226,7 +226,55 @@ git checkout dev
 git switch main
 ```
 
+### Fusionar branques
 
+Combinar una branca, en anglès *merge*, consisteix a incorporar els canvis presents en una branca a la branca en la qual ens trobem actualment. Per dur a terme una fusió, s’han de dur a terme les accions següents:
+
+1. Posicionar-nos a la branca que volem que rebi la fusió, és a dir, la destinatària.
+2. Per realitzar la fusió tenim dues comandes que podem utilitzar:
+
+    ```console
+    git merge nom_branca
+    git rebase nom_branca
+    ```
+
+La fusió fa que els commits de totes dues branques. En el cas del *merge*, aquesta unió manté la història de les dues branques. Mentre que el rebase reescriu la història com si no hi hagués cap bifurcació. Una pràctica recomanda és no usar mai *rebase* en branques públiques.
+
+### Fusió amb conflictes
+
+Quan es fa la fusió de dues branques, pot passar que no ens deixi fer-la automàticament perquè n'hi ha conflictes (dues branques modifiquen la mateixa línia). En aquest cas, ens tocarà solucionar-lo. Usant un editor com Code, veurem que ens mostra les dues opcions i ens permetrà triar quina és la solució que volem que quedi com definitiva.
+
+### stash o temporal
+
+Quan estem editant un branca, pot passar que tinguem canvis que encara no volem consolidar (fer un commit) però que necessitem canviar de branca per exemple per solucionar un petit error.
+
+Si canviem de branca amb canvis no confirmats (al working directory o al stage) al canviar de branca arrosseguem aquests canvis i òbviament, això pot tenir conseqüències no desitjades.
+
+Per evitar-lo fer una solució semblant a retallar i enganxar del portapapers dels sistemes operatius.
+
+```console
+git stash
+```
+
+Això treurà temporalment els canvis que no tinguem consolidats i els guarda al stash. Ja podrem canviar de branca i al tornar, podem recuperar aquests canvis fent:
+
+```console
+git stash pop
+```
+
+### Eliminar branques
+
+Normalment, un cop una branca ha estat fusionada cap una altra, l'eliminarem.
+
+```console
+git branch -d nom_branca
+```
+
+Si volem esborrar una branca que no ha estat fusionada, cal usar la següent comanda:
+
+```console
+git branch -D nom_branca
+```
 
 ## Links
 
