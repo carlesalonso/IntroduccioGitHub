@@ -166,7 +166,8 @@ Exemple:
 
 ```console
 git tag -a 0.0.1 -m "Release version 0.0.1"
-``
+```
+
 Aquesta ordre crea un *tag* al commit on ens trobem en aquest moment. Un *tag* és un àlies que s'utilitza per fer referència a un commit sense necessitat de saber el seu hash. Normalment s'utilitza per a *indicar números o noms de versions* associades a un determinat commit. D'aquesta manera podem identificar una versió d'una manera més amable. Hi ha un estàndard a l'etiquetatge del programari anomenat [versionat semàntic](https://semver.org/lang/es/).
 
 ### Eliminar commits
@@ -192,9 +193,9 @@ En el primer cas, tot i que movem l'historial fins el el commit indicat, no es m
 
 Similar a l'anterior en el sentit que volem tirar enrere l'historial, però amb la diferència que enlloc d'eliminar commits, fa un commit nou amb l'estat del commit indicat.
 
-````console
+```console
 git revert --no-edit HEAD~4
-``
+``````
 
 Aquesta comanda faria un nou commit replicant la versió corresponent al HEAD-4, també es pot indicar el id del commit.
 
