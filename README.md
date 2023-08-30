@@ -276,6 +276,196 @@ Si volem esborrar una branca que no ha estat fusionada, cal usar la següent com
 git branch -D nom_branca
 ```
 
+### Clonant un projecte des de GitHub
+
+La comanda per clonar un projecte és ```git clone```.
+
+Hi ha dues vies per "descarregar" el contingut:
+
+1. Via `ssh` utilitzant **clau pública/privada**.
+2. Via `https` utilitzant **usuari/token**.
+
+#### Clonat mitjançant ssh
+
+Si intentem clonar un repositori via ssh obtindrem el següent error:
+
+```console
+cam@molnir:~$ git clone git@github.com:cam/webprova.git
+Clonando en 'webprova'...
+git@github.com: Permission denied (publickey).
+fatal: No se pudo leer del repositorio remoto.
+
+Por favor asegúrate que tienes los permisos de acceso correctos
+y que el repositorio existe.
+```
+
+Hi ha un error daccés ja que necessitem establir les claus adequades. El primer serà generar un parell de claus pública/privada (si és que ja no les hem generat):
+
+```console
+cam@molnir:~$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/cam/.ssh/id_rsa):
+Created directory '/home/cam/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/cam/.ssh/id_rsa
+Your public key has been saved in /home/cam/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:NE+B9Q62B6KKqVivlXKB+vUvz/mOPoXKXGUWI1aEEEQ cam@molnir
+The key's randomart image is:
++---[RSA 3072]----+
+|     oEo *=      |
+|        = oo     |
+|       .+.=o.    |
+|   .   o *+=     |
+|  . . . S=o o    |
+| . o +  o ..     |
+|. = *o o .       |
+|.+ * .=..o       |
+|o o.. .=B+o      |
++----[SHA256]-----+
+```
+
+Comprovem la generació de les claus:
+
+```console
+cam@molnir:~$ ls .ssh
+id_rsa  id_rsa.pub
+```
+
+Ara hem de copiar la **clau pública `aneu_rsa.pub`** en GitHub. Per a això hem d'afegir una nova "clau de desplegament" anant a una url com aquesta
+: <https://github.com/daw-mataro-epiaedu/webprova/settings/keys>
+
+> 💡 Substitueix `carlesalonso` pel teu usuari i `webprova` pel nom del teu projecte.
+
+Al camp **Title** una bona pràctica és posar el nom de la màquina i al camp **Key** posem el contingut de la clau pública `id_rsa.pub` marcant el check de **Allow write access**.
+
+![GitHub Deploy Key](./images/github-key.png)
+
+Ara ja podem clonar el repositori sense problemes:
+
+```console
+cam@molnir:~$ git clone git@github.com:carlesalonso/webprova.git
+Clonando en 'webprova'...
+warning: Pareces haber clonado un repositorio sin contenido.
+```
+
+Efectivamente el repositorio está vacío:
+
+```console
+cam@molnir:~$ ls -l webprova/
+total 0
+```
+
+> 💡 És possible afegir claus públiques a nivell dusuari GitHub i servirà per a qualsevol projecte creat. Això es fa des de la url <https://github.com/settings/keys>.
+
+#### Clonat mitjançant https
+
+Sempre que el repositori sigui **públic** no hi ha cap problema per clonar-lo a través de https:
+
+```console
+cam@molnir:~$ git clone https://github.com/carlesalonso/webprova.git
+Clonando en 'webprova'...
+warning: Pareces haber clonado un repositorio sin contenido.
+```
+
+Vegem què passa si canviem els permisos al repositori GitHub i ho posem **privat**:
+
+```console
+cam@molnir:~$ git clone https://github.com/carlesalonso/webprova.git
+Clonando en 'webprova'...
+Username for 'https://github.com': carlesalonso
+Password for 'https://carlesalonso@github.com':
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Autenticación falló para 'https://github.com/carlesalonso/webprova.git/'
+```
+
+Hem de [crear un "token" d'accés personal](https://docs.github.com/es/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) a la següent url de GitHub: <https://github.com/settings/tokens/new> indicant:
+
+| Camp          | Contingut                                                               |
+| ------------- | ----------------------------------------------------------------------- |
+| Note          | Explicació de l'ús del token                                            |
+| Expiration    | Durada del token                                                        |
+| Select scopes | Àmbits d'aplicació. Marcar com a mínim: `repo`, `workflow` i `read:org` |
+
+![GitHub Personal Access Token](./img/github-token.png)
+
+Quan es generi el token **cal copiar-lo** perquè no es tornarà a mostrar.
+
+Ara sí que podrem clonar el repositori privat sense cap problema:
+
+```console
+cam@molnir:~$ git clone https://github.com/carlesalonso/webprova.git
+Clonando en 'webprova'...
+Username for 'https://github.com': carlesalonso
+Password for 'https://carlesalonso@github.com':
+warning: Pareces haber clonado un repositorio sin contenido.
+```
+
+> 💡 Al camp "password" introduïm el token creat prèviament.
+
+### Gestionar origens remots
+
+Al clonar per defecte s'associa com *origin* l'adreça del repositori del qual s'ha fet la clonació. A vegades és útil tenir més d'una adreça remota, per exemple, si hem fet un fork d'un repo i volem sincronitzar el repositori local amb els canvis del repositori original.
+
+```console
+git remote add remot git@github.com:carlesalonso/webprova.git
+```
+
+Es podem veure quins repositoris remots tenim vinculats amb ```git remote -v```.
+
+Altres opcions són eliminar origens remots ```git remote rm nom``` o canviar el nom d'un origen remot ```git remote rename nom_vell nom_nou```.
+
+### git push
+
+Serveix per actualitzar el repositori remot. Format:
+
+```console
+git push origin main
+```
+
+En aquest cas diem que pugem els canvis corresponents a la branca *main*.
+
+Si volem pujar tots els canvis corresponents a totes les branques:
+
+```console
+git push --all origin
+```
+
+Si al push se li afegeix el paràmetre ```---force```, estem dient que pugi el contingut local, descartant els canvis que es trobi a dalt.
+
+### git pull
+
+Serveix per baixar el contingut remot i actualitzar el repositori local.
+
+ ```console
+ git pull remote
+ ```
+
+De la mateixa manera que amb el pull, ```---force``` forçarà que s'apliquin els canvis remots, descartant els locals.
+
+### git fetch
+
+Similar al pull, però no realitza la fusió, sinó que simplement sincronitza els canvis i queda a l'espera de la fusió.
+
+```console
+git fetch origin main
+git merge
+```
+
+La utilitat ens que ens permet revisar i comparar (```git diff```) abans de fusionar contingut local i contingut remot.
+
+### Branques remotes
+
+Quan clonem un repositori que conté més d’una branca.
+Si fem git branch només es veu master, però si fem git branch –a veiem totes les branques remotes també.
+Per activar les branques en local, simplement cal canviar a la branca:
+
+```console
+git checkout nom_branca
+```
+
 ## Links
 
 - [Git](https://git-scm.com)
