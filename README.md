@@ -164,6 +164,36 @@ git tag TAG
 
 Aquesta ordre crea un *tag* al commit on ens trobem en aquest moment. Un *tag* és un àlies que s'utilitza per fer referència a un commit sense necessitat de saber el seu hash. Normalment s'utilitza per a *indicar números o noms de versions* associades a un determinat commit. D'aquesta manera podem identificar una versió d'una manera més amable.
 
+### Eliminar commits
+
+```console
+git reset id_commit
+```
+
+```console
+git reset HEAD~1
+```
+
+Això elimina l'història fins el commit indicat en el primer cas i en el segon desfaria el darrer commit (ens anem al HEAD-1) Existeixen bàsicament dues opcions:
+
+```console
+git reset ---soft
+git reset ---hard
+```
+
+En el primer cas, tot i que movem l'historial fins el el commit indicat, no es modifica el stage ni el working directory, per tant, conservem els darrers canvis. Si fem la segona opció, el directori de treball també es modifica.
+
+### git revert
+
+Similar a l'anterior en el sentit que volem tirar enrere l'historial, però amb la diferència que enlloc d'eliminar commits, fa un commit nou amb l'estat del commit indicat.
+
+````console
+git revert --no-edit HEAD~4
+``
+
+Aquesta comanda faria un nou commit replicant la versió corresponent al HEAD-4, també es pot indicar el id del commit.
+
+
 ## Links
 
 - [Git](https://git-scm.com)
