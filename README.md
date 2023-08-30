@@ -201,7 +201,7 @@ Aquesta comanda faria un nou commit replicant la versió corresponent al HEAD-4,
 
 ### Branques
 
-Una branca (branch) és una línia independent de desenvolupament: per tant, amb el seus propis working directory, staging area i project history (git directory). Com a mínim un repositori ha de tenir una branca. La branca inicial es ```master`` o ```main``. Existeix un punter especial que apunta a la branca activa en aquell moment i que s'anomena ```HEAD``.
+Una branca (branch) és una línia independent de desenvolupament: per tant, amb el seus propis working directory, staging area i project history (git directory). Com a mínim un repositori ha de tenir una branca. La branca inicial es ```master``` o ```main```. Existeix un punter especial que apunta a la branca activa en aquell moment i que s'anomena ```HEAD``.
 
 Al canviar de branca es modifica el contingut del directori de treball a l'estat que tenia amb la branca destinació.
 
@@ -209,21 +209,22 @@ Al canviar de branca es modifica el contingut del directori de treball a l'estat
 
 ```console
 git branch nom_branca
-``
+```
 
 Si volem veure les branques que tenim definides:
 
 ```console
 git branch
-``
+```
+
 ### Canviar de branca
 
-La comanda tradicional per canviar de branca i que encara funciona és ```git checkout`` tot i que actualment tenim també l'opció d'utilitzar ```git switch``
+La comanda tradicional per canviar de branca i que encara funciona és ```git checkout``` tot i que actualment tenim també l'opció d'utilitzar ```git switch```.
 
 ```console
 git checkout dev
 git switch main
-``
+```
 
 
 
