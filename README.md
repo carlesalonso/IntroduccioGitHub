@@ -340,7 +340,7 @@ Ara hem de copiar la **clau pública `aneu_rsa.pub`** en GitHub. Per a això hem
 
 Al camp **Title** una bona pràctica és posar el nom de la màquina i al camp **Key** posem el contingut de la clau pública `id_rsa.pub` marcant el check de **Allow write access**.
 
-![GitHub Deploy Key](./images/github-key.png)
+![GitHub Deploy Key](./img/github-key.png)
 
 Ara ja podem clonar el repositori sense problemes:
 
