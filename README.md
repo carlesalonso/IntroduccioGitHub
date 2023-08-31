@@ -340,7 +340,7 @@ Ara hem de copiar la **clau pública `aneu_rsa.pub`** en GitHub. Per a això hem
 
 Al camp **Title** una bona pràctica és posar el nom de la màquina i al camp **Key** posem el contingut de la clau pública `id_rsa.pub` marcant el check de **Allow write access**.
 
-![GitHub Deploy Key](./images/github-key.png)
+![GitHub Deploy Key](./img/github-key.png)
 
 Ara ja podem clonar el repositori sense problemes:
 
@@ -465,6 +465,51 @@ Per activar les branques en local, simplement cal canviar a la branca:
 ```console
 git checkout nom_branca
 ```
+
+### Fluxes de treball
+
+En un projecte on hi col·labora tot un equip de desenvolupadors, QA, etc. cal establir una metodologia per evitar conflictes, treballar amb codi desactualitzat, etc. Per aquest motiu s'introdueixen els fluxes de treball (workflow). Existeixen diverses opcions, que no s'han d'entendre com que una és millor que l'altra, sinó que cadascuna s'adapta millor a una determinada situació.
+
+Les diferències entre els diferents fluxes es basa a l'estratègia que prenen a l'hora de crear les branques. Els principals workflow que s'utilitzen actualment són:
+
+- Git Flow
+- GitHub Flow
+- Trunk-based development
+
+#### Git Flow
+
+Considerat que és una mica complicat i avançat per a molts dels projectes actuals, GitFlow permet el desenvolupament paral·lel on els desenvolupadors poden treballar per separat de la branca mestra en funcions on es crea una branca de funcions a partir de la branca mestra. Després, quan els canvis s'han completat, el desenvolupador torna a fusionar aquests canvis a la branca mestra per al seu llançament.
+
+Aquesta estratègia de ramificació consta de les branques següents:
+
+**Master/Main**
+**Develop**
+**Features**: per desenvolupar noves funcions que es ramifiquen de la branca de desenvolupament
+**Release**: ajuda a preparar un nou llançament de producció; generalment es ramifica de la branca de desenvolupament i s'ha de tornar a fusionar amb el desenvolupament i el mestre
+**Hotfix**: també ajuda a preparar-se per a un llançament, però a diferència de les branques de llançament, les branques de hotfix sorgeixen d'un error que s'ha descobert i s'ha de resoldre; permet als desenvolupadors seguir treballant en els seus propis canvis a la branca de desenvolupament mentre es corregeix l'error.
+
+Les branques **main** i **develop** es consideren les branques principals, amb una vida útil infinita, mentre que la resta són branques de suport que estan pensades per ajudar al desenvolupament paral·lel entre desenvolupadors, normalment de curta durada.
+
+![GitFlow](./img/Gitflow.png)
+
+#### GitHub Flow
+
+És una simplificació de GitFlow per projectes o no calgui mantenir un versionat. A diferència de GitFlow, aquest model no té branques de llançament. Comenceu amb la branca principal i després els desenvolupadors creen branques, amb branques que provenen directament del mestre, per aïllar el seu treball que després es fusionen de nou amb el principal. Aleshores s'elimina la branca de les funcions.
+
+La idea principal d'aquest model és mantenir el codi mestre en un estat desplegable constant i, per tant, pot suportar processos d'integració i lliurament continus.
+
+![GitHubFlow](./img/githubflow.png)
+
+#### Trunk-based development
+
+El desenvolupament basat en troncs és una estratègia de ramificació que, de fet, no requereix cap branca, però, en canvi, els desenvolupadors integren els seus canvis en un tronc compartit almenys una vegada al dia. Aquest tronc compartit hauria d'estar llest per al seu llançament en qualsevol moment.
+
+La idea principal d'aquesta estratègia és que els desenvolupadors facin canvis més petits amb més freqüència i, per tant, l'objectiu és limitar les branques de llarga durada i evitar conflictes de fusió, ja que tots els desenvolupadors treballen a la mateixa branca. En altres paraules, els desenvolupadors es comprometen directament al tronc sense l'ús de branques.
+
+En conseqüència, el desenvolupament basat en tronc és un activador clau de la integració contínua (CI) i el lliurament continu (CD) ja que els canvis es fan amb més freqüència a la troncal, sovint diverses vegades al dia (CI), la qual cosa permet que les funcions s'alliberin molt més ràpidament (CD).
+
+![Trunk-based](./img/trunk-based.png)
+
 
 ## Links
 
