@@ -471,7 +471,7 @@ Si fem git branch només es veu master, però si fem git branch –a veiem totes
 Per activar les branques en local, simplement cal canviar a la branca:
 
 ```console
-git checkout nom_branca
+git switch nom_branca
 ```
 
 ## Col·laboració via pull request
