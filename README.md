@@ -248,6 +248,14 @@ Combinar una branca, en anglès *merge*, consisteix a incorporar els canvis pres
 
 La fusió fa que els commits de totes dues branques. En el cas del *merge*, aquesta unió manté la història de les dues branques. Mentre que el rebase reescriu la història com si no hi hagués cap bifurcació. Una pràctica recomanda és no usar mai *rebase* en branques públiques.
 
+Podem veure que en el *merge* els commits corresponents a les dues branques són clarament visibles:
+
+![exeple merge](/img/merge.png)
+
+Si es fa un *rebase* es veu com es modifica la història, entrellançant els commits de les dues branques:
+
+![exeple rebase](/img/rebase.png)
+
 ### Fusió amb conflictes
 
 Quan es fa la fusió de dues branques, pot passar que no ens deixi fer-la automàticament perquè n'hi ha conflictes (dues branques modifiquen la mateixa línia). En aquest cas, ens tocarà solucionar-lo. Usant un editor com Code, veurem que ens mostra les dues opcions i ens permetrà triar quina és la solució que volem que quedi com definitiva.
