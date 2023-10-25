@@ -137,6 +137,14 @@ Aquesta ordre ens permet mostrar els canvis que es van introduir en un determina
 
 Els hash dels commits tenen 40 caràcters, però no cal copiar-los sencers: només cal indicar entre els [8 i 10 primers caràcters](http://git-scm.com/book/en/v2/Git-Tools-Revision-Selection#Short-SHA-1) per identificar un commit correctament.
 
+### Comparar entre diferents commits
+
+També podeu trobar diferències entre versions d'un mateix fitxer, per això utilitzem els identificadors dels commit.
+
+```console
+ git diff f2c4ec0 2ca00f8
+ ```
+
 ### Treure fitxer de l'àrea de preparació
 
 ```
@@ -466,7 +474,119 @@ Per activar les branques en local, simplement cal canviar a la branca:
 git checkout nom_branca
 ```
 
-### Fluxes de treball
+## Col·laboració via pull request
+
+Aquesta és la metodologia típica quan es vol col·laborar en un projecte *open source*, tot i que també és una molt bona estratègia amb repositoris privats, de manera que els col·laboradors enlloc de clonar-se directament el repositori, es fan una bifurcació (*fork*) al seu GitHub i envien els canvis seguint el mètode que ara es descriu que s'anomena [pull request](https://docs.github.com/pull-requests).
+
+Plantejarem un escenari en què una altra persona `calonsmar` vol col·laborar amb el nostre projecte `webprova` (que és privat)seguint un model molt habitual al món "open-source". Per això, cal que l'haguem definit al repositori com col·laborador. Si és un repositori personal, el col·laborador té tots els permisos, però amb un repositori d'organització, li podem dir que només tingui permís de lectura.
+
+Si es tractés d'un repositori públic, aquest pas no seria necessari perquè qualsevol usuari de GitHub pot fer la bifurcació.
+
+### Bifurcar el projecte
+
+El col·laborador rebrà una notificació conforme se li han donat permisos per col·laborar al repositori i un cop oberta, haurà d'acceptar la invitació.
+
+Un cop fet això, el col·laborador ja veu el repositori i pot fer fork. Si es tracta d'un repositori públic directament podrà fer el fork al veure el repositori.
+
+### Clonar la bifurcació
+
+El primer que ha de fer calonsmar és clonar el seu propi repositori:
+
+```console
+calonsmar@orange:~$ git clone git@github.com:calonsmar/webprova.git
+Clonando en 'webprova'...
+remote: Enumerating objects: 20, done.
+remote: Counting objects: 100% (20/20), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 20 (delta 5), reused 17 (delta 3), pack-reused 0
+Recibiendo objetos: 100% (20/20), listo.
+Resolviendo deltas: 100% (5/5), listo.
+```
+
+A l'hora de col·laborar les bones pràctiques demanen crear una branca de treball:
+
+```console
+calonsmar@orange:~$ cd webprova/
+calonsmar@orange:~/webprova$ git switch -c colab
+Cambiado a nueva rama 'colab'
+calonsmar@orange:~/webprova$ vi README.md
+calonsmar@orange:~/webprova$ cat -n README.md
+     1  # webprova
+     2
+     3 Projecte base per fer proves.
+     4
+     5 Col·laborant en mode "open-source"
+     
+calonsmar@orange:~/webprova$ git commit -am "Add brief notes about colab"
+[colab 2ca00f8] Add brief notes about colab
+ 1 file changed, 2 insertions(+)
+```
+
+### Preparant un "pull request"
+
+Ara farem un `git push` per pujar els canvis al repositori de `calonsmar`:
+
+```console
+calonsmar@orange:~/webprova$ git push origin colab
+Enumerando objetos: 5, listo.
+Contando objetos: 100% (5/5), listo.
+Compresión delta usando hasta 2 hilos
+Comprimiendo objetos: 100% (2/2), listo.
+Escribiendo objetos: 100% (3/3), 321 bytes | 321.00 KiB/s, listo.
+Total 3 (delta 1), reusado 0 (delta 0), pack-reusado 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote:
+remote: Create a pull request for 'colab' on GitHub by visiting:
+remote:      https://github.com/calonsmar/webprova/pull/new/colab
+remote:
+To github.com:calonsmar/webprova.git
+ * [new branch]      colab -> colab
+```
+
+Ens indica la possibilitat de crear un "pull request" anant a *Contribute*. Abans ens hem d'assegurar que no tenim cap commit per darrere del repositori original, per sincronitzar-nos, hi ha el botó *Sync fork*. Un cop sincronitzat, ja podrem proposar els canvis.
+
+A la proposta de *pull request* hem de detallar què proposem: això es pot acompanyar de fragments de codi, de referències a incidències, etc. Un cop fet, ja podem clicar a "Create pull request".
+
+En aquest moment, haurà arribat una notificació a `carlesalonso` informant-lo que existeix un "pull request" per a `webprova` pendent de revisió.
+
+### Revisió del "pull request"
+
+Ara el propietari, en aquest cas carlesalonso, obre el *pull request* i pot veure la proposta realitzada.
+
+GitHub informa si pot fer la fusió de la proposta de forma automàtica o no. De tota manera, sempre és recomanable comprovar quins canvis s'estan proposant, perquè una proposta pot no donar problemes de fusió però no tenir un comportament desitjat. Si cliquem sobre el commit de la proposta, ens anem a una pantalla de revisió de codi.
+
+Allà podem revisar el codi i enviar feedback al col·laborador, indicant si el canvi s'aprova, es rebutja demanant canvis o simplement s'envia el comentari.
+
+Un cop de tornada a la pantalla del pull request, podem introduir els canvis proposats (*Merge pull request*), un cop us demanarà que ho confirmeu.
+
+Per últim queda el pas de tancar el *pull request*, aquí és important documentar els canvis que ha incoporat el pull request.
+
+En els casos que la revisió de la proposta requereixi per exemple compilar, llençar tests, etc. el procediment és baixar-se en local la proposta. El procediment és aquest:
+
+```console
+carlesalonso@molnir:~/webprova$ git fetch origin pull/1/head:test
+```
+
+Amb això estic sincronitzant una branca local anomenada **test** que té el contingut del pull request (el número serveix per identificar quin pull request és i amb el head indiquem que baixem l'estat corresponent al darrer commit).
+
+Allà podem verificar el codi, fer un merge a la branca local **dev** per comprovar el correcte funcionament i si tot és correcte, acceptar el pull request.
+
+És molt important que un cop s'ha acceptat un pull request, el col·laboradors actualitzin la branca bifurcada, de fet se'ls mostra el missatge que estan per darrere.
+
+ Un cop fet això, hauria de sincronitzar els canvis amb un `git pull origin master`, cosa que també hauria de fer el propietari del repositori per tenir el repositori local actualitzat. Finalment, s'haurien d'esborrar les branques implicades en el pull request.
+
+## Altres comandes interessants
+
+| Comanda         | Descripció                                                        |
+| --------------- | ----------------------------------------------------------------- |
+| git blame       | Permet buscar responsables de cada canvi                          |
+| git cherry-pick | Permet aplicar un commit específic                                |
+| git clean       | Permet esborrar arxius sense seguimient                           |
+| git gc          | Permet optimizar l'espai del repositori local                     |
+
+I una llista [enorme](https://git-scm.com/docs/git#_git_commands) d'ordres...
+
+## Estratègies de treball amb branques
 
 En un projecte on hi col·labora tot un equip de desenvolupadors, QA, etc. cal establir una metodologia per evitar conflictes, treballar amb codi desactualitzat, etc. Per aquest motiu s'introdueixen els fluxes de treball (workflow). Existeixen diverses opcions, que no s'han d'entendre com que una és millor que l'altra, sinó que cadascuna s'adapta millor a una determinada situació.
 
