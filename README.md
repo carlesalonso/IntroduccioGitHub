@@ -583,6 +583,10 @@ Allà podem verificar el codi, fer un merge a la branca local **dev** per compro
 
  Un cop fet això, hauria de sincronitzar els canvis amb un `git pull origin master`, cosa que també hauria de fer el propietari del repositori per tenir el repositori local actualitzat. Finalment, s'haurien d'esborrar les branques implicades en el pull request.
 
+ Ho podem resumir amb el següent esquema:
+
+ ![col·laboració via pull request](./img/fork-collab.png)
+
 ## Altres comandes interessants
 
 | Comanda         | Descripció                                                        |
