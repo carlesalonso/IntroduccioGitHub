@@ -692,7 +692,7 @@ Per crear un lloc web amb GitHub Pages, has de crear un repositori amb el nom d'
 
 ![GitHub Pages resultat](./img/githubpages2.png)
 
-Alguns exemples interesssants:
+Alguns exemples molt interesssants:
 
 - [Blog utilitzant Hugo](https://cristinafsanz.github.io/projects/about/)
 - [Presentació utilitzant WebSlides](https://cristinafsanz.github.io/melies-origen/#slide=1)
