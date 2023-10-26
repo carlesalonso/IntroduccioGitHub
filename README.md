@@ -642,6 +642,21 @@ En conseqüència, el desenvolupament basat en tronc és un activador clau de la
 
 ![Trunk-based](./img/trunk-based.png)
 
+## Altres funcionalitats de GitHub
+
+GitHub ha anat evolucionant a partir de la idea del servidor de control de versions, incloent més funcionalitats pensades per crear tot un ecosistema pels desenvolupadors.
+
+### Issues (propostes)
+
+Eina que ens permet crear notes associades a un determinat repositori amb l'objectiu de:
+
+- Identificar errors en el codi i fer seguiment.
+- Proposar millores o noves funcionalitats.
+- Fer un seguiment de les tasques a realitzar en el repositori.
+
+Al text dels Issues es poden mencionar usuaris de GitHub, fer referència a línies de codi, inserir fragments de codi o crear llistes de tasques que poden marcar-se com completades. 
+
+
 
 ## Links
 
