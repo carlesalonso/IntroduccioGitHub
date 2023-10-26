@@ -700,11 +700,15 @@ Alguns exemples interesssants:
 
 ## GitHub Actions
 
-GitHub Actions és un servei d'integració contínua que permet automatitzar el flux de treball del desenvolupament de programari amb accions personalitzades. Les accions són tasques que es poden combinar per crear fluxos de treball personalitzats.
+GitHub Actions és un servei d'integració i desplegament continu que permet automatitzar el flux de treball del desenvolupament de programari amb accions personalitzades. Les accions són tasques que es poden combinar per crear fluxos de treball personalitzats.
 
 I què això de la integració contínua (CI)? Doncs és una pràctica de desenvolupament de programari en la qual els desenvolupadors fusionen els canvis en el codi en un repositori compartit diverses vegades al dia. Cada fusió es comprova automàticament mitjançant la creació i l'execució d'una sèrie de proves. Això permet detectar i solucionar problemes de manera més ràpida.
 
-La integració contínua, unida al desplegament continu (CD), integra la filosofia **devops** que tant de moda està actualment.
+Els canvis introduits pels desenvolupadors es validen creant una prova automatitzada de creació i execució. Si les proves són exitoses, els canvis es fusionen amb la branca de publicació. Si les proves no són exitoses, es notifica al desenvolupador que el codi no es pot fusionar fins que no es corregeixi.
+
+Parlem de desplegament continu (CD) quan els canvis es fusionen amb la branca de publicació, es despleguen automàticament en un entorn de producció, sense intervenció humana. Això ens permet alliberar noves versions del nostre software de manera més ràpida i segura.
+
+La integració contínua, unida al desplegament continu, integra la filosofia **devops** que tant de moda està actualment.
 
 ![CI/CD](./img/cicd.png)
 
@@ -726,4 +730,5 @@ Es basen en la tecnologia de contenidors de Docker i permeten tenir un entorn de
 - [GitHub Lab](https://lab.github.com/)
 - [GitHub Actions](https://docs.github.com/es/actions)
 - [Introducción a las GitHub Actions](https://www.plainconcepts.com/es/que-es-github-actions/)
+- [Guía rápida ci-cd con GitHub Actions y Netlify](https://www.adictosaltrabajo.com/2022/03/17/guia-rapida-ci-cd-con-github-actions-y-netlify-para-ingenieros-de-front-end/)
 - [GitHub Codespaces](https://docs.github.com/en/codespaces/overview)
