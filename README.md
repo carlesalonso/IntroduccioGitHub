@@ -68,14 +68,14 @@ Alternativament, podem crear la carpeta del repositori:
 
 Per mostrar canvis entre staged i el repositori
 
- ```
+ ```console
  git diff --cached
  git diff --cached <arxiu>
 ```
   
 ### Afegir arxius l'àrea de preparació (stage)
 
-```
+```console
  git add <arxiu> # Afegir arxius
  git add .       # Afegir tots els arxius nous o modificats
 ```
@@ -87,14 +87,14 @@ Per mostrar canvis entre staged i el repositori
 - El fitxer apareixerà en color *verd* en fer un *git status*
 - Tornar a modificar el fitxer
 - El fitxer apareixerà *dues vegades* en fer un *git status*:
-   - En color verd, indicant que s'ha afegit el primer canvi a l'àrea de preparació
-   - En color *vermell*, indicant que hi ha un "segon canvi" posterior que *no s'ha inclòs* a l'àrea de preparació
+  - En color verd, indicant que s'ha afegit el primer canvi a l'àrea de preparació
+  - En color *vermell*, indicant que hi ha un "segon canvi" posterior que *no s'ha inclòs* a l'àrea de preparació
 - Si s'executa un ^git commit *en aquest moment* només s'incorporarà el primer canvi* al repositori com a nova versió. El segon canvi continuarà existint (l'arxiu no haurà canviat), però no estarà guardat al commit
 - Si voleu afegir el segon canvi s'haurà d'executar novament *git add* per afegir-lo a l'àrea de preparació
 
 ### Visualitzar canvis dels fitxers a l'àrea de preparació
 
- ```
+ ```console
  git diff --staged
  git diff --staged <arxiu>
 ```
@@ -103,7 +103,7 @@ Visualitzar canvis dels fitxers a l'àrea de preparació:
 
 ### Confirmar canvis (commit)
 
- ```
+ ```console
  git commit -m "missatge"
  ```
 
@@ -120,7 +120,7 @@ De la mateixa manera, si prèviament hem guardat un arxiu al repositori mitjanç
 
 ### Historial de canvis
 
- ```
+ ```console
  git log
  git log --graph
  ```
@@ -147,7 +147,7 @@ També podeu trobar diferències entre versions d'un mateix fitxer, per això ut
 
 ### Treure fitxer de l'àrea de preparació
 
-```
+```console
  git reset <arxiu>
 ```
 
@@ -155,9 +155,10 @@ De vegades ens trobem que hem afegit canvis a l'àrea de preparació que no vole
 
 ### Eliminar les modificacions respecte a l'stage
 
-```
+```console
 git restore <archivo>
 ```
+
 També es pot fer d'aquesta forma (mètode anterior a l'aparició del *git restore*)
 
 ```console
@@ -608,7 +609,7 @@ Les diferències entre els diferents fluxes es basa a l'estratègia que prenen a
 - GitHub Flow
 - Trunk-based development
 
-#### Git Flow
+### Git Flow
 
 Considerat que és una mica complicat i avançat per a molts dels projectes actuals, GitFlow permet el desenvolupament paral·lel on els desenvolupadors poden treballar per separat de la branca mestra en funcions on es crea una branca de funcions a partir de la branca mestra. Després, quan els canvis s'han completat, el desenvolupador torna a fusionar aquests canvis a la branca mestra per al seu llançament.
 
@@ -624,7 +625,7 @@ Les branques **main** i **develop** es consideren les branques principals, amb u
 
 ![GitFlow](./img/Gitflow.png)
 
-#### GitHub Flow
+### GitHub Flow
 
 És una simplificació de GitFlow per projectes o no calgui mantenir un versionat. A diferència de GitFlow, aquest model no té branques de llançament. Comenceu amb la branca principal i després els desenvolupadors creen branques, amb branques que provenen directament del mestre, per aïllar el seu treball que després es fusionen de nou amb el principal. Aleshores s'elimina la branca de les funcions.
 
@@ -632,7 +633,7 @@ La idea principal d'aquest model és mantenir el codi mestre en un estat despleg
 
 ![GitHubFlow](./img/githubflow.png)
 
-#### Trunk-based development
+### Trunk-based development
 
 El desenvolupament basat en troncs és una estratègia de ramificació que, de fet, no requereix cap branca, però, en canvi, els desenvolupadors integren els seus canvis en un tronc compartit almenys una vegada al dia. Aquest tronc compartit hauria d'estar llest per al seu llançament en qualsevol moment.
 
