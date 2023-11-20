@@ -1,4 +1,4 @@
-# Introducció al control de versions amb GitHub
+# Introducción al control de versions amb GitHub
 
 ![GitHub Logo](/img/github-mark.png)
 
