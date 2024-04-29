@@ -295,7 +295,7 @@ git branch -D nom_branca
 
 ### Clonant un projecte des de GitHub
 
-La comanda per clonar un projecte és ```git clone```.
+La comanda per clonar un projecte és `git clone`.
 
 Hi ha dues vies per "descarregar" el contingut:
 
@@ -647,6 +647,14 @@ En conseqüència, el desenvolupament basat en tronc és un activador clau de la
 
 GitHub ha anat evolucionant a partir de la idea del servidor de control de versions, incloent més funcionalitats pensades per crear tot un ecosistema pels desenvolupadors per tal de facilitar la comunicació entre els diversos col·laboradors, així com donar eines per millorar la gestió i documentació del projecte.
 
+### Gists
+
+Eina que permet crear fragments de codi, notes, etc. que es poden compartir amb altres usuaris de GitHub. Aquests fragments es poden clonar, editar i actualitzar.
+
+Per accedir a aquesta eina, cal anar a la url <https://gist.github.com/> i es pot crear un nou *gist* amb el botó *New gist*.
+
+Els gist públics es poden cercar i veure per tothom, mentre que els privats només es poden explorar públicament, però sí que qualsevol que tingui la URL pot veure'l.
+
 ### Issues (propostes)
 
 Eina que ens permet crear notes associades a un determinat repositori amb l'objectiu de:
@@ -664,6 +672,18 @@ Al text dels Issues es poden mencionar usuaris de GitHub, fer referència a lín
 Eina que ens permet agrupar issues i pull request en un determinat fita. Aquesta eina ens permet fer un seguiment de les tasques a realitzar en un projecte.
 
 ![GitHub Milestone](./img/milestone.png)
+
+### Discussions (discussions)
+
+Les `issues`són una bona eina per notificar, però no són el mecanisme més adequat per a la discussió. Per això, GitHub ha creat les `discussions` que permeten als col·laboradors del projecte discutir temes de manera més estructurada.
+
+A la configuració del repositori s'ha d'activar aquesta funcionalitat. Un cop activada, es pot crear una nova discussió amb el botó *New discussion*.
+
+![GitHub Discussion](./img/discussion.png)
+
+Qualsevol usuari pot afegir comentaris a la discussió i aquests es poden marcar com a resposta acceptada. Les discussions es troben organitzades per temàtiques,  i es poden afegir de noves.
+
+![GitHub Discussion Temes](./img/discussio-02.png)
 
 ### Projects (projectes)
 
@@ -712,6 +732,14 @@ Parlem de desplegament continu (CD) quan els canvis es fusionen amb la branca de
 La integració contínua, unida al desplegament continu, integra la filosofia **devops** que tant de moda està actualment.
 
 ![CI/CD](./img/cicd.png)
+
+Per crear una Action sobre un repositori, cal anar a la pestanya **Actions** i clicar a **New workflow**. Això ens permetrà crear un fitxer de configuració que s'anomena `main.yml` i que es troba a la ruta `.github/workflows/`.
+
+![GitHub Actions](./img/GH-Actions01.png)
+
+A la pantalla de creació de la Action, podem triar entre una sèrie de plantilles predefinides o crear una nova Action des de zero.
+
+![GitHub Actions](./img/GH-Actions02.png)
 
 ## Codespaces
 
