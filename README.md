@@ -18,7 +18,7 @@ A la carpeta *files* teniu la presentació en format PDF, un full de consulta r�
 
 ### Configuració
 
-  ```console
+  ```bash
    # Opcions obligatòries (nom i correu)
    git config --global user.name "Nom i cognom"
    git config --global user.email correu@electronic
@@ -32,13 +32,13 @@ A la carpeta *files* teniu la presentació en format PDF, un full de consulta r�
 
 Per crear un repositori cal posar-s'hi dins la carpeta desitjada i fer:
 
- ```console
+ ```bash
  git init
  ```
 
 Alternativament, podem crear la carpeta del repositori:
 
- ```console
+ ```bash
  git init nom_carpeta
 ```
 
@@ -48,7 +48,7 @@ Alternativament, podem crear la carpeta del repositori:
 
 ### Revisant l'estat
 
-```console
+```bash
  git status
 ```
 
@@ -61,21 +61,21 @@ Alternativament, podem crear la carpeta del repositori:
 
  Mostra diferència entre directori de treball i staged
 
-```console
+```bash
  git diff
  git diff <arxiu>
 ```
 
 Per mostrar canvis entre staged i el repositori
 
- ```console
+ ```bash
  git diff --cached
  git diff --cached <arxiu>
 ```
   
 ### Afegir arxius l'àrea de preparació (stage)
 
-```console
+```bash
  git add <arxiu> # Afegir arxius
  git add .       # Afegir tots els arxius nous o modificats
 ```
@@ -94,7 +94,7 @@ Per mostrar canvis entre staged i el repositori
 
 ### Visualitzar canvis dels fitxers a l'àrea de preparació
 
- ```console
+ ```bash
  git diff --staged
  git diff --staged <arxiu>
 ```
@@ -103,7 +103,7 @@ Visualitzar canvis dels fitxers a l'àrea de preparació:
 
 ### Confirmar canvis (commit)
 
- ```console
+ ```bash
  git commit -m "missatge"
  ```
 
@@ -120,7 +120,7 @@ De la mateixa manera, si prèviament hem guardat un arxiu al repositori mitjanç
 
 ### Historial de canvis
 
- ```console
+ ```bash
  git log
  git log --graph
  ```
@@ -129,7 +129,7 @@ Aquesta ordre mostra l'històric dels commits del repositori. Es pot navegar a l
 
 ### Veure canvis realitzats en anteriors commits
 
-```console
+```bash
  git show <commit>
 ```
 
@@ -141,13 +141,13 @@ Els hash dels commits tenen 40 caràcters, però no cal copiar-los sencers: nom�
 
 També podeu trobar diferències entre versions d'un mateix fitxer, per això utilitzem els identificadors dels commit.
 
-```console
+```bash
  git diff f2c4ec0 2ca00f8
  ```
 
 ### Treure fitxer de l'àrea de preparació
 
-```console
+```bash
  git reset <arxiu>
 ```
 
@@ -155,25 +155,25 @@ De vegades ens trobem que hem afegit canvis a l'àrea de preparació que no vole
 
 ### Eliminar les modificacions respecte a l'stage
 
-```console
+```bash
 git restore <archivo>
 ```
 
 També es pot fer d'aquesta forma (mètode anterior a l'aparició del *git restore*)
 
-```console
+```bash
 git checkout -- <arxiu>
 ```
 
 ### Etiquetat
 
-```console
+```bash
 git tag TAG
 ```
 
 Exemple:
 
-```console
+```bash
 git tag -a 0.0.1 -m "Release version 0.0.1"
 ```
 
@@ -181,17 +181,17 @@ Aquesta ordre crea un *tag* al commit on ens trobem en aquest moment. Un *tag* �
 
 ### Eliminar commits
 
-```console
+```bash
 git reset id_commit
 ```
 
-```console
+```bash
 git reset HEAD~1
 ```
 
 Això elimina l'història fins el commit indicat en el primer cas i en el segon desfaria el darrer commit (ens anem al HEAD-1) Existeixen bàsicament dues opcions:
 
-```console
+```bash
 git reset ---soft
 git reset ---hard
 ```
@@ -202,9 +202,9 @@ En el primer cas, tot i que movem l'historial fins el el commit indicat, no es m
 
 Similar a l'anterior en el sentit que volem tirar enrere l'historial, però amb la diferència que enlloc d'eliminar commits, fa un commit nou amb l'estat del commit indicat.
 
-```console
+```bash
 git revert --no-edit HEAD~4
-``````
+```
 
 Aquesta comanda faria un nou commit replicant la versió corresponent al HEAD-4, també es pot indicar el id del commit.
 
@@ -216,21 +216,21 @@ Al canviar de branca es modifica el contingut del directori de treball a l'estat
 
 ### Crear branques
 
-```console
+```bash
 git branch nom_branca
 ```
 
 Si volem veure les branques que tenim definides:
 
-```console
+```bash
 git branch
 ```
 
 ### Canviar de branca
 
-La comanda tradicional per canviar de branca i que encara funciona és ```git checkout``` tot i que actualment tenim també l'opció d'utilitzar ```git switch```.
+La comanda tradicional per canviar de branca i que encara funciona és `git checkout` tot i que actualment tenim també l'opció d'utilitzar `git switch`.
 
-```console
+```bash
 git checkout dev
 git switch main
 ```
@@ -242,7 +242,7 @@ Combinar una branca, en anglès *merge*, consisteix a incorporar els canvis pres
 1. Posicionar-nos a la branca que volem que rebi la fusió, és a dir, la destinatària.
 2. Per realitzar la fusió tenim dues comandes que podem utilitzar:
 
-    ```console
+    ```bash
     git merge nom_branca
     git rebase nom_branca
     ```
@@ -269,13 +269,13 @@ Si canviem de branca amb canvis no confirmats (al working directory o al stage) 
 
 Per evitar-lo fer una solució semblant a retallar i enganxar del portapapers dels sistemes operatius.
 
-```console
+```bash
 git stash
 ```
 
 Això treurà temporalment els canvis que no tinguem consolidats i els guarda al stash. Ja podrem canviar de branca i al tornar, podem recuperar aquests canvis fent:
 
-```console
+```bash
 git stash pop
 ```
 
@@ -283,15 +283,35 @@ git stash pop
 
 Normalment, un cop una branca ha estat fusionada cap una altra, l'eliminarem.
 
-```console
+```bash
 git branch -d nom_branca
 ```
 
 Si volem esborrar una branca que no ha estat fusionada, cal usar la següent comanda:
 
-```console
+```bash
 git branch -D nom_branca
 ```
+
+### GitHub
+
+GitHub és una plataforma de desenvolupament col·laboratiu de programari que utilitza el sistema de control de versions Git. A més de les funcionalitats de Git, GitHub afegeix les seves pròpies funcionalitats, com ara la interfície gràfica web, l'eines de gestió de tasques, etc.
+
+Existeixen alternatives com GitLab o Bitbucket, però GitHub és la més popular. GitHub permet allotjar projectes de codi obert i privats, així com oferir funcionalitats com a *fork*, *pull request*, *wiki* i *gestió de tasques*.
+
+### Crear un compte a GitHub
+
+Per a crear un compte a GitHub, cal anar a la pàgina principal de GitHub i clicar a *Sign up*. Cal omplir les dades i confirmar el correu electrònic.
+
+Podem crear un compte gratuït o de pagament, que inclou més funcionalitats. A més, existeixen comptes d'organització per a grups de persones.
+
+### GiHub Desktop i extensions per editors
+
+A més de poder treballar des de la interfície web, GitHub ofereix una aplicació gràfica, `GitHub Desktop`, que permet gestionar els repositoris de forma més visual. A més, hi ha extensions per a editors com Visual Studio Code que permeten integrar GitHub amb l'editor i gestionar les accions sobre els repositoris: pull request, issues, etc.
+
+### GitHub cli
+
+GitHub CLI és una eina de línia de comandes que permet interactuar amb GitHub des de la consola. Per instal·lar-la cal anar a la pàgina de [GitHub CLI](https://cli.github.com/) i seguir les instruccions. A la secció de `files`del repositori teniu un full resum amb les diferents comandes i accions.
 
 ### Clonant un projecte des de GitHub
 
@@ -306,7 +326,7 @@ Hi ha dues vies per "descarregar" el contingut:
 
 Si intentem clonar un repositori via ssh obtindrem el següent error:
 
-```console
+```bash
 cam@molnir:~$ git clone git@github.com:cam/webprova.git
 Clonando en 'webprova'...
 git@github.com: Permission denied (publickey).
@@ -318,7 +338,7 @@ y que el repositorio existe.
 
 Hi ha un error daccés ja que necessitem establir les claus adequades. El primer serà generar un parell de claus pública/privada (si és que ja no les hem generat):
 
-```console
+```bash
 cam@molnir:~$ ssh-keygen -t rsa
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/cam/.ssh/id_rsa):
@@ -345,7 +365,7 @@ The key's randomart image is:
 
 Comprovem la generació de les claus:
 
-```console
+```bash
 cam@molnir:~$ ls .ssh
 id_rsa  id_rsa.pub
 ```
@@ -361,7 +381,7 @@ Al camp **Title** una bona pràctica és posar el nom de la màquina i al camp *
 
 Ara ja podem clonar el repositori sense problemes:
 
-```console
+```bash
 cam@molnir:~$ git clone git@github.com:carlesalonso/webprova.git
 Clonando en 'webprova'...
 warning: Pareces haber clonado un repositorio sin contenido.
@@ -369,7 +389,7 @@ warning: Pareces haber clonado un repositorio sin contenido.
 
 Efectivamente el repositorio está vacío:
 
-```console
+```bash
 cam@molnir:~$ ls -l webprova/
 total 0
 ```
@@ -380,7 +400,7 @@ total 0
 
 Sempre que el repositori sigui **públic** no hi ha cap problema per clonar-lo a través de https:
 
-```console
+```bash
 cam@molnir:~$ git clone https://github.com/carlesalonso/webprova.git
 Clonando en 'webprova'...
 warning: Pareces haber clonado un repositorio sin contenido.
@@ -388,7 +408,7 @@ warning: Pareces haber clonado un repositorio sin contenido.
 
 Vegem què passa si canviem els permisos al repositori GitHub i ho posem **privat**:
 
-```console
+```bash
 cam@molnir:~$ git clone https://github.com/carlesalonso/webprova.git
 Clonando en 'webprova'...
 Username for 'https://github.com': carlesalonso
@@ -412,7 +432,7 @@ Quan es generi el token **cal copiar-lo** perquè no es tornarà a mostrar.
 
 Ara sí que podrem clonar el repositori privat sense cap problema:
 
-```console
+```bash
 cam@molnir:~$ git clone https://github.com/carlesalonso/webprova.git
 Clonando en 'webprova'...
 Username for 'https://github.com': carlesalonso
@@ -426,19 +446,19 @@ warning: Pareces haber clonado un repositorio sin contenido.
 
 Al clonar per defecte s'associa com *origin* l'adreça del repositori del qual s'ha fet la clonació. A vegades és útil tenir més d'una adreça remota, per exemple, si hem fet un fork d'un repo i volem sincronitzar el repositori local amb els canvis del repositori original.
 
-```console
+```bash
 git remote add remot git@github.com:carlesalonso/webprova.git
 ```
 
-Es podem veure quins repositoris remots tenim vinculats amb ```git remote -v```.
+Es podem veure quins repositoris remots tenim vinculats amb `git remote -v`.
 
-Altres opcions són eliminar origens remots ```git remote rm nom``` o canviar el nom d'un origen remot ```git remote rename nom_vell nom_nou```.
+Altres opcions són eliminar origens remots `git remote rm nom` o canviar el nom d'un origen remot `git remote rename nom_vell nom_nou`.
 
 ### git push
 
 Serveix per actualitzar el repositori remot. Format:
 
-```console
+```bash
 git push origin main
 ```
 
@@ -446,17 +466,17 @@ En aquest cas diem que pugem els canvis corresponents a la branca *main*.
 
 Si volem pujar tots els canvis corresponents a totes les branques:
 
-```console
+```bash
 git push --all origin
 ```
 
-Si al push se li afegeix el paràmetre ```---force```, estem dient que pugi el contingut local, descartant els canvis que es trobi a dalt.
+Si al push se li afegeix el paràmetre `---force`, estem dient que pugi el contingut local, descartant els canvis que es trobi a dalt.
 
 ### git pull
 
 Serveix per baixar el contingut remot i actualitzar el repositori local.
 
- ```console
+ ```bash
  git pull remote
  ```
 
@@ -466,7 +486,7 @@ De la mateixa manera que amb el pull, ```---force``` forçarà que s'apliquin el
 
 Similar al pull, però no realitza la fusió, sinó que simplement sincronitza els canvis i queda a l'espera de la fusió.
 
-```console
+```bash
 git fetch origin main
 git merge
 ```
@@ -479,7 +499,7 @@ Quan clonem un repositori que conté més d’una branca.
 Si fem git branch només es veu master, però si fem git branch –a veiem totes les branques remotes també.
 Per activar les branques en local, simplement cal canviar a la branca:
 
-```console
+```bash
 git switch nom_branca
 ```
 
@@ -501,7 +521,7 @@ Un cop fet això, el col·laborador ja veu el repositori i pot fer fork. Si es t
 
 El primer que ha de fer calonsmar és clonar el seu propi repositori:
 
-```console
+```bash
 calonsmar@orange:~$ git clone git@github.com:calonsmar/webprova.git
 Clonando en 'webprova'...
 remote: Enumerating objects: 20, done.
@@ -514,7 +534,7 @@ Resolviendo deltas: 100% (5/5), listo.
 
 A l'hora de col·laborar les bones pràctiques demanen crear una branca de treball:
 
-```console
+```bash
 calonsmar@orange:~$ cd webprova/
 calonsmar@orange:~/webprova$ git switch -c colab
 Cambiado a nueva rama 'colab'
@@ -535,7 +555,7 @@ calonsmar@orange:~/webprova$ git commit -am "Add brief notes about colab"
 
 Ara farem un `git push` per pujar els canvis al repositori de `calonsmar`:
 
-```console
+```bash
 calonsmar@orange:~/webprova$ git push origin colab
 Enumerando objetos: 5, listo.
 Contando objetos: 100% (5/5), listo.
@@ -572,7 +592,7 @@ Per últim queda el pas de tancar el *pull request*, aquí és important documen
 
 En els casos que la revisió de la proposta requereixi per exemple compilar, llençar tests, etc. el procediment és baixar-se en local la proposta. El procediment és aquest:
 
-```console
+```bash
 carlesalonso@molnir:~/webprova$ git fetch origin pull/1/head:test
 ```
 
