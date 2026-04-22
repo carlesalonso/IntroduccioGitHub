@@ -606,7 +606,46 @@ Allà podem verificar el codi, fer un merge a la branca local **dev** per compro
 
  Ho podem resumir amb el següent esquema:
 
- ![col·laboració via pull request](./img/fork-collab.png)
+```mermaid
+graph TD
+    RepoOrig[REPO. ORIGINAL]:::original
+    Collab[COL·LABORADOR]:::collaborator
+    
+    subgraph MergeProcess [Fase de Merge a l'Original]
+        direction TB
+        MG_Wait[Atendre el Pull Request]:::action
+        MG_Text1[Si ok merge del PR]:::note
+        MG_Text2[git fetch del pull request]:::note
+        MG_Final(merge):::final_merge
+        MG_Wait --> MG_Text1
+        MG_Text1 --> MG_Text2
+        MG_Text2 --> MG_Final
+    end
+    
+    subgraph CollabEnv [Entorn del Col·laborador]
+        direction TB
+        CL_ClonePoint( ):::invis
+        CL_Local(Fitxers locals):::collaborator
+        CL_Dev[branch dev]:::collaborator
+        CL_PushPoint( ):::invis
+        CL_ClonePoint --> CL_Local
+        CL_Local --> CL_Dev
+        CL_Dev --> CL_PushPoint
+    end
+
+    RepoOrig -- "fork (main)" --> Collab
+    Collab -- "git clone" --> CL_ClonePoint
+    CL_PushPoint -- "git push (dev)" --> Collab
+    Collab -.-> |"pull request dev -> main"| RepoOrig
+    RepoOrig ==> MG_Wait
+
+    classDef original fill:#e1f5fe,stroke:#01579b,stroke-width:2px,rx:10,ry:10;
+    classDef collaborator fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,rx:10,ry:10;
+    classDef note fill:#fffde7,stroke:#fbc02d,stroke-width:1px,stroke-dasharray: 5 5;
+    classDef action fill:#fce4ec,stroke:#880e4f,stroke-width:2px;
+    classDef final_merge fill:#fafafa,stroke:#212121,stroke-width:3px,rx:50,ry:50;
+    classDef invis fill:none,stroke:none;
+```
 
 ## Altres comandes interessants
 
