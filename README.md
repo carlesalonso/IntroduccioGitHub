@@ -46,6 +46,17 @@ Alternativament, podem crear la carpeta del repositori:
 
 ![Cicle de vida](https://git-scm.com/book/en/v2/images/lifecycle.png)
 
+```mermaid
+sequenceDiagram
+    participant working area
+    participant staging
+    participant repository
+    working area ->> staging: git add
+    staging->>repository: git commit 
+    repository-->>staging: git reset
+    staging-->>working area: git restore
+```
+
 ### Revisant l'estat
 
 ```bash
